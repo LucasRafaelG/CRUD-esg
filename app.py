@@ -8,11 +8,11 @@ st.set_page_config(
 )
 
 # ── Importar páginas ──────────────────────────────────────────
-from pages import (
+from _pages import (
     dashboard, fornecedores, diagnosticos,
     consultas, configuracoes
 )
-from pages import planos, avaliacoes, funcoes_proc, views
+from _pages import planos, avaliacoes, funcoes_proc, views
 
 # ── CSS customizado ───────────────────────────────────────────
 st.markdown(
