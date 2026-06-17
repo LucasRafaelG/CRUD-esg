@@ -32,11 +32,6 @@ CONSULTAS = {
         "descricao": "Lista planos de ação de criticidade ALTA com contagem de tarefas pendentes e dias restantes até o prazo. Usa CASE WHEN e DATEDIFF.",
         "nivel": "⭐⭐⭐ Alto",
     },
-    "5 — Fornecedores sem Diagnóstico (LEFT JOIN + IS NULL)": {
-        "sql": QUERY_FORNECEDORES_SEM_DIAGNOSTICO,
-        "descricao": "Identifica fornecedores que ainda não possuem nenhum diagnóstico ESG associado. Usa LEFT JOIN para detectar ausência de relação.",
-        "nivel": "⭐⭐ Médio",
-    },
 }
 
 
@@ -104,35 +99,4 @@ def show():
                 )
                 st.plotly_chart(fig, use_container_width=True)
 
-            elif "4 —" in consulta_sel and "dias_restantes" in df.columns:
-                st.markdown("#### 📊 Visualização — Dias Restantes por Plano")
-                fig = px.bar(
-                    df,
-                    x="id_plano",
-                    y="dias_restantes",
-                    color="tarefas_pendentes",
-                    color_continuous_scale="Reds",
-                    labels={
-                        "dias_restantes": "Dias Restantes",
-                        "id_plano": "ID Plano",
-                        "tarefas_pendentes": "Tarefas Pendentes",
-                    },
-                    text="fornecedor",
-                )
-                fig.update_layout(
-                    paper_bgcolor="rgba(0,0,0,0)",
-                    plot_bgcolor="rgba(0,0,0,0)",
-                    font_color="#e0e0e0",
-                )
-                st.plotly_chart(fig, use_container_width=True)
-
-            # Exportar CSV
-            csv = df.to_csv(index=False).encode("utf-8")
-            st.download_button(
-                "⬇️ Exportar resultado (.csv)",
-                data=csv,
-                file_name=f"resultado_consulta.csv",
-                mime="text/csv",
-            )
-        else:
-            st.warning("Nenhum resultado encontrado.")
+            
