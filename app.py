@@ -6,13 +6,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
+st.markdown("""
+<style>
+[data-testid="stSidebarNav"] {
+    display: none;
+}
+</style>
+""", unsafe_allow_html=True)
 # ── Importar páginas ──────────────────────────────────────────
-from _pages import (
+from pages import (
     dashboard, fornecedores, diagnosticos,
     consultas, configuracoes
 )
-from _pages import planos, avaliacoes, funcoes_proc, views
+from pages import planos, avaliacoes, funcoes_proc, views
 
 # ── CSS customizado ───────────────────────────────────────────
 st.markdown(
@@ -157,8 +163,8 @@ with st.sidebar:
     st.markdown("---")
     st.markdown(
         "<div style='font-size:0.7rem; color:#4a7a5a; text-align:center;'>"
-        "Banco de Dados II · 2025<br>Auditoria ESG de Fornecedores<br>"
-        "<br>Etapa 06 — Versão Final"
+        "Banco de Dados e IA · 2026<br>Auditoria ESG de Fornecedores<br>"
+        "<br>"
         "</div>",
         unsafe_allow_html=True,
     )
